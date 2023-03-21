@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="CustomiseProject.UserControls.ColorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomiseProject.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Left" Margin="8 0 0 0">
+                <Label Content="Select View:" VerticalAlignment="Bottom"/>
+                <ListBox ItemsSource="{Binding ColorSelectView ,Mode=TwoWay}"  SelectedItem="{Binding Selecteddata}"  Height="200" Width="200">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="{Binding ItemName}"  Margin="0 0 0 0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" Grid.Column="2">
+                <Label Content="Select Attribute:"/>
+                <ListBox ItemsSource="{Binding ColorSelectAttributes}" SelectedItem="{Binding Selectedinfo}" Height="200" Width="200">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="{Binding VItemName}" Margin="0 0 0 0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+               </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Left" Margin="8 0 0 0">
+                <Label Content="Select Color For:"/>
+                <ComboBox ItemsSource="{Binding SelectColorFor}" Text="{Binding Selectcolor}"  Height="25" Width="180" />
+            </StackPanel>
+            <ComboBox Grid.Column="2" ItemsSource="{Binding Colorlist}" Text="{Binding Colorbox}" Height="25" Width="100" VerticalAlignment="Bottom" />
+        </Grid>
+
+
+        <StackPanel Grid.Row="2"  HorizontalAlignment="Left" Margin="8 0 0 0">
+            <Label Content="Preview:"/>
+            <TextBlock Text="{Binding Preview}" Height="70" Width="405"   Background="Yellow"/>
+        </StackPanel>
+
+       
+        <Button Grid.Row="3" Content="Reset all attributes of the view to Default" Command="{Binding ResetallAttributestoDefault }" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="25" Width="260"  Margin="00 5 50 0"/>
+
+
+    </Grid>
+</UserControl>
